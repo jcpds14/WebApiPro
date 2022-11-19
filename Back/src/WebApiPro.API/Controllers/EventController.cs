@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using WebApiPro.API.Data;
 using WebApiPro.API.Models;
 
 namespace WebApiPro.API.Controllers
@@ -11,41 +12,24 @@ namespace WebApiPro.API.Controllers
     public class EventController : ControllerBase
     {
 
-        public IEnumerable<Event> _event = new Event[]{
-                new Event(){
-                    EventId = 1,
-                    Theme = "Angular 11 e .NET 5",
-                    Local = "Bahia",
-                    Batch = "1. Lote",
-                    AmountOfPeople = 300,
-                    EventData = DateTime.Now.AddDays(5).ToString(),
-                    ImageURL = "foto.png"
-            },
-            new Event(){
-                    EventId = 2,
-                    Theme = "Angular 11 e Suas Novidades",
-                    Local = "Rio de Janeiro",
-                    Batch = "2. Lote",
-                    AmountOfPeople = 300,
-                    EventData = DateTime.Now.AddDays(5).ToString("dd/MM/yyyy"),
-                    ImageURL = "foto2.png"
-            }
-            };
-        public EventController()
+
+        private readonly DataContext _context;
+        public EventController(DataContext context)
         {
+            _context = context;
 
         }
 
         [HttpGet]
         public IEnumerable<Event> Get()
         {
-            return _event;
+            return _context.Events;
 
         }
         [HttpGet("{id}")]
-        public IEnumerable<Event> GetById(int id)
+        public Event GetById(int id)
         {
-            return _event.Where(Event => Event.EventId == id);
+            return _context.Events.FirstOrDefault(Event => Event.EventId == id);
 
         }
 
