@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Back/src/WebApiPro.API/bin/Debug/net5.0/WebApiPro.API.dll",
+            "program": "${workspaceFolder}/Back/src/WebProEvents.API/bin/Debug/net5.0/WebProEvents.API.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Back/src/WebApiPro.API",
+            "cwd": "${workspaceFolder}/Back/src/WebProEvents.API",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
